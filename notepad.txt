@@ -1,0 +1,73 @@
+For grass we'll input Board Games, Card games n shit
+
+also hobbies
+
+a map that I can fill out to include where ive been in the world
+
+future projects
+
+and featuring
+
+
+
+
+
+GAMES ->
+
+WORK ON BACKGROUND
+
+WORK ON HONORABLE MENTIONS
+
+
+
+ON HOLD: 
+
+.shows-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shows1-item {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	max-width: 4800px;
+	max-height: 4000px;
+}
+
+.shows-rank {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+    color: #ff0000;    /* TO DO: MAYBE DARKEN */
+    margin-bottom: 10px;
+}
+
+.shows1-rank {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+    color: #ff0000;    /* TO DO: MAYBE DARKEN */
+    margin-bottom: 10px;
+}
+
+.shows1-shelf {
+    display: grid;
+		    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    /* automatically fits as many 200px columns as possible. If the screen shrinks, they wrap to the next row. */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centers */
+    padding: 0 20px;
+}
+
+
+.shows-shelf {
+    display: grid;
+	    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* automatically fits as many 200px columns as possible. If the screen shrinks, they wrap to the next row. */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centers */
+    padding: 0 20px;
+}

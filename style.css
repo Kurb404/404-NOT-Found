@@ -1,0 +1,687 @@
+ @font-face {
+		font-family: 'mr-robot';
+		src: url('fonts/mr-robot.ttf') format('truetype'); 
+}
+
+@font-face {
+	font-family: 'NordwandMono';
+		src: url('fonts/NordwandMono-SemiBold.ttf') format('truetype'); 
+}
+
+body /*the base*/ {
+    font-family: monospace; 
+    text-align: center;
+    background-color: #050505;
+    color: #ffffff;
+	margin: 0; /* no more browser margin */
+	min-height: 100vh; /* forced fit*/
+    padding: 40px 20px;
+	box-sizing: border-box; 
+	
+		background: linear-gradient(		/*the light from top left */
+	125deg, 
+        rgba(0, 0, 0, 0.85) 0%, 
+        rgba(0, 0, 0, 1) 30%
+    );
+}
+
+.container-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /*2 equal columns */
+    gap: 20px; /* Space between */
+    max-width: 600px;
+    margin: 40px auto 0 auto; /* Centers */
+}
+
+.card::before {
+	content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	
+	background: linear-gradient(
+	125deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0) 50%
+    );
+	pointer-events: none;
+	z-index: 1;
+	
+	border-radius: 14px 14px 4px 4px;
+}
+.card {
+    background-color: #0a0a0a;
+    padding: 40px 20px;
+    border-radius: 24px;
+    text-decoration: none; /* Removes blue */
+    color: inherit; /* color inherited */
+	
+	border-top: 10px solid #2a2a2a;  /*crt screens effect*/
+	border-left: 10px solid #222;
+    border-right: 10px solid #1a1a1a;
+    border-bottom: 20px solid #111;
+	position: relative;
+	/* overflow: hidden; */
+	
+	box-shadow: 
+        inset 0 0 25px rgba(0, 0, 0, 0.9), 
+        0 8px 20px rgba(0, 0, 0, 0.7);
+		
+    transition: transform 0.3s ease, box-shadow 0.3s ease;    /* hover effect smooth */
+	/* box-shadow: 0 4px 15px rgba(0,0,0,0.6); old one*/
+}
+
+/* hover over a container */
+.card:hover {
+    transform: translateY(-8px); /*slightly up */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* shadow  */
+    background-color: #252525; /* lightens */
+}
+
+.card h2 {
+    font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 5px; 
+	font-size: 35px;
+	text-transform: uppercase;
+	
+	position: relative;
+    z-index: 2;
+}
+
+.card p {
+	font-family: 'NordwandMono', monospace;
+	opacity: 0; 
+    transform: translateY(10px); 
+    transition: all 0.3s ease;
+
+	position: relative;
+	z-index: 2;	
+}
+.card:hover p {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+h1 {
+	font-family: 'mr-robot', monospace;
+	font-size: 5rem;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	margin-bottom: 40px;
+	
+	-webkit-background-clip: text;  /*gradient */
+	background-clip: text;
+	background-image: linear-gradient(320deg, #440401, #af0000); /*so all light comes from same direction*/
+	
+	color: transparent;
+}
+
+
+body:after /*crt effect*/ {
+	content: "";
+	position: fixed; /* locks it to the screen even if you scroll */
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none; /*click through effect */
+	z-index: 99; 
+	background: 
+		repeating-linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 2px,
+            rgba(0, 0, 0, 0.1) 2px,
+            rgba(0, 0, 0, 0.1) 4px
+        ),
+        radial-gradient(
+            circle, 
+            rgba(0,0,0,0) 60%, 
+            rgba(0,0,0,0.4) 100%
+        );
+		
+		background-size: auto, 100% 100%;
+    background-repeat: repeat, no-repeat;
+}
+
+.control-panel {
+	position: absolute;
+    bottom: -14px; 
+    right: 12px;
+    display: flex;
+    gap: 10px; 
+    align-items: center;
+    z-index: 3; /* above glare */
+}
+
+.button {
+    width: 12px;
+    height: 4px;
+    background-color: #1a1a1a;
+    border-top: 1px solid #3a3a3a;
+    border-bottom: 1px solid #000; 
+    border-radius: 1px;
+}
+
+.power-light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ff3b30; 
+    box-shadow: 0 0 6px #ff3b30; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover .power-light {
+    background-color: #34c759; 
+    box-shadow: 0 0 10px #34c759; 
+}
+
+
+
+
+
+
+
+/* GAMES HTML FILE --------------------------------------------- */
+
+ body.games-layout {
+	background-color: #380001;
+	min-height: 1000vh;
+	
+}
+
+
+
+h2 {
+	font-family: 'mr-robot', monospace;
+	font-size: 6rem;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	margin-bottom: 40px;
+	
+	-webkit-background-clip: text;  /*gradient */
+	background-clip: text;
+	background-image: linear-gradient(320deg, #440401, #af0000); /*so all light comes from same direction*/
+	
+	color: transparent;
+	text-align: center;
+}
+
+.table-of-contents {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    justify-content: center; 
+    margin: 40px 0 80px 0; 
+}
+
+/* Buttons */
+.toc-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px 40px;
+    background-color: #1a1a1a;          /*TO DO: NEEDS SOME WORK */
+    border: 2px solid #333;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+/* Hover Effect */
+.toc-btn:hover {
+    background-color: #ffffff;
+    color: #000000; /* Inverts */
+    transform: scale(1.05); /* enlarges */
+}
+
+/* Section Titles */
+.section-title {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-align: position;
+}
+/* SHEEELF */
+.games-shelf {
+    display: grid;
+    /* automatically fits as many 200px columns as possible. If the screen shrinks, they wrap to the next row. */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centers */
+    padding: 0 20px;
+}
+/*  single game block */
+.game-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game-rank {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+    color: #ff0000;    /* TO DO: MAYBE DARKEN */
+    margin-bottom: 10px;
+}
+/*  Frame */
+.cover-art-box {
+    width: 100%;
+    border: 3px solid #333; /* thin frame */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* shadow*/
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The Image itself */
+.cover-art-box img {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Forces standard vertical cover dimensions */
+    object-fit: cover; /* Prevents the image from stretching weirdly */
+    border-bottom: 1px solid #333; /* The line separating the image from the title box */
+}
+
+/* The Connected Name Box */
+.game-title {
+    font-family: 'NordwandMono', monospace; 
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 1.1rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+
+
+/* BACK BUTTON V2 */
+.back2::before {
+	content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	
+	background: linear-gradient(
+	125deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0) 50%
+    );
+	pointer-events: none;
+	z-index: 1;
+	
+	border-radius: 14px 14px 4px 4px;
+}
+.back2 {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-align: center;
+	
+	
+    background-color: #0a0a0a;
+    padding: 40px 20px;
+    border-radius: 24px;
+    text-decoration: none; /* Removes blue */
+    color: inherit; /* color inherited */
+	
+	border-top: 10px solid #2a2a2a;  /*crt screens effect*/
+	border-left: 10px solid #222;
+    border-right: 10px solid #1a1a1a;
+    border-bottom: 20px solid #111;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* overflow: hidden; */
+	
+	box-shadow: 
+        inset 0 0 25px rgba(0, 0, 0, 0.9), 
+        0 8px 20px rgba(0, 0, 0, 0.7);
+		
+    transition: transform 0.3s ease, box-shadow 0.3s ease;    /* hover effect smooth */
+	/* box-shadow: 0 4px 15px rgba(0,0,0,0.6); old one*/
+}
+.back2:hover {
+    transform: translateY(-8px); /*slightly up */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* shadow  */
+    background-color: #252525; /* lightens */
+}
+
+.back2:hover .power-light {
+    background-color: #34c759; 
+    box-shadow: 0 0 10px #34c759; 
+}
+
+   /* ADMIN BUTTON */
+   
+   .admin::before {
+	content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	
+	background: linear-gradient(
+	125deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0) 50%
+    );
+	pointer-events: none;
+	z-index: 1;
+	
+	border-radius: 14px 14px 4px 4px;
+}
+.admin {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+    margin-bottom: 40px;
+	
+	
+    background-color: #0a0a0a;
+    padding: 40px 20px;
+    border-radius: 24px;
+    text-decoration: none; /* Removes blue */
+    color: inherit; /* color inherited */
+	
+	border-top: 10px solid #2a2a2a;  /*crt screens effect*/
+	border-left: 10px solid #222;
+    border-right: 10px solid #1a1a1a;
+    border-bottom: 20px solid #111;
+	position: absolute;
+	top: 0;
+	right: 0;
+	/* overflow: hidden; */
+	
+	box-shadow: 
+        inset 0 0 25px rgba(0, 0, 0, 0.9), 
+        0 8px 20px rgba(0, 0, 0, 0.7);
+		
+    transition: transform 0.3s ease, box-shadow 0.3s ease;    /* hover effect smooth */
+	/* box-shadow: 0 4px 15px rgba(0,0,0,0.6); old one*/
+}
+.admin:hover {
+    transform: translateY(-8px); /*slightly up */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* shadow  */
+    background-color: #252525; /* lightens */
+}
+
+.admin:hover .power-light {
+    background-color: #34c759; 
+    box-shadow: 0 0 10px #34c759; 
+}
+
+ 
+/* --------------------- HM SHELF --------------------------- */
+
+.HM-shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto; 
+    padding: 0 20px;
+}
+/*  single game block */
+.HM-game-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* NOT NEEDED PROB? .HM-game-rank {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+    color: #ff0000;    /* TO DO: MAYBE DARKEN */
+  /*  margin-bottom: 10px;
+} */ 
+/*  Frame */
+.HM-cover-art-box {
+    width: 100%;
+    border: 3px solid #333; /* thin frame */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* shadow*/
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The Image itself */
+.HM-cover-art-box img {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Forces standard vertical cover dimensions */
+    object-fit: cover; /* Prevents the image from stretching weirdly */
+    border-bottom: 1px solid #333; /* The line separating the image from the title box */
+}
+
+/* The Connected Name Box */
+.HM-game-title {
+    font-family: 'NordwandMono', monospace; 
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 1.1rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+/* IMAAAAAAAAAAAAAAAAAAGES ---------------------------- */
+
+.split-cover .image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    border-bottom: 1px solid #333; 
+}
+
+.split-cover .image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: none; /* removes border */
+}
+
+.split-cover .img-top-left {
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 2; /* on top */
+}
+
+.split-cover .img-bottom-right {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    z-index: 1;
+}
+
+/* .split-cover .image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top left, transparent 49.5%, #ff0000 49.5%, #ff0000 50.5%, transparent 50.5%);
+    z-index: 3;
+    pointer-events: none;
+} */
+
+
+
+
+/* THE TIER CONTAINERSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */
+
+/* 1. Base Grid Setup */
+.tier-grid {
+  display: grid;
+  gap: 15px; /* Adds space between the games */
+  max-width: 1000px; /* Controls how far out the columns spread */
+  margin: 0 auto; /* Centers the entire grid container on the page */
+  justify-items: center; /* Centers the text horizontally inside its column */
+  text-align: center; 
+}
+
+/* 2. Set Column Layouts */
+#grid-really-like {
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+}
+
+#grid-like, #grid-dislike, #grid-tasty {
+  max-width: 1500px;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+}
+
+/* 3. Text Styling */
+#grid-really-like div {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#grid-like div {
+  font-size: 20px;
+}
+
+#grid-tasty div {
+  font-size: 19px;
+}
+
+#grid-playsoon, #grid-comesoon, #grid-playsoonSD, #grid-playsoonM, #grid-comesoonSD, #grid-comesoonM, #grid-onhold div {
+  font-size: 19px;
+}
+
+#grid-dislike div {
+  max-width: 1500px;
+  font-size: 18px;
+  color: #aaaaaa;
+}
+
+#grid-current div {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+/* Container holding three */
+.three-column-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px; 
+  margin: 40px auto;
+  align-items: start; /* Prevents columnsstretching vertically */
+}
+
+.layout-column h4 {
+  color: #1d1e27;
+  font-family: Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.layout-column h5 {
+  color: #4b4e53;
+  font-family: Impact, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.narrow-grid {
+  grid-template-columns: 1fr !important; /* Forces lists to be single column */
+  font-size: 16px;
+}
+
+/*preface and glossary */
+
+.preface-title {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-align: position;
+}
+
+.glossary-title {
+    font-family: 'mr-robot', monospace; 
+    font-size: 3rem;
+	margin-top: 200px;
+    margin-bottom: 10px;
+    text-align: position;
+}
+
+.glossary {
+  max-width: 800px; /* Prevents the text from stretching too far across the screen */
+  margin: 40px auto; /* Adds space above/below and centers the block on the page */
+  color: #dddddd; /* A soft white/grey is usually better for reading than pure white */
+  line-height: 1.6; /* Adds breathing room between the lines of text */
+  text-align: center; /* Change this to 'left' if you prefer a traditional look */
+}
+
+.glossary p {
+  margin-bottom: 20px; /* Controls the space between paragraphs */
+    font-size: 18px;
+
+}
+
+.preface {
+  max-width: 800px; /* Prevents the text from stretching too far across the screen */
+  margin: 40px auto; /* Adds space above/below and centers the block on the page */
+  color: #dddddd; /* A soft white/grey is usually better for reading than pure white */
+  line-height: 1.6; /* Adds breathing room between the lines of text */
+  text-align: center; /* Change this to 'left' if you prefer a traditional look */
+}
+
+.preface p {
+  margin-bottom: 20px; /* Controls the space between paragraphs */
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOWS SHOWS SHOWS SHOWS.HTML ------------------------------------------------------------------------------ */
+/* SHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOWS SHOWS SHOWS SHOWS.HTML ------------------------------------------------------------------------------ */
+/* SHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOWS SHOWS SHOWS SHOWS.HTML ------------------------------------------------------------------------------ */
+/* SHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOWS SHOWS SHOWS SHOWS.HTML ------------------------------------------------------------------------------ */
+
+
+/* Erlaubt der ersten Platzierung, breiter zu sein als die anderen, um das 4K Bild zu zeigen */
+.mr-robot-highlight {
+    grid-column: 1 / -1; /* Nimmt die gesamte Breite der Reihe ein */
+    max-width: 1600px;    /* Verhindert, dass es ZU riesig wird */
+    margin: 0 auto 30px auto; 
+}
+
+/* Passt das Bild an das breite Layout an */
+.wallpaper-box {
+    aspect-ratio: 16 / 9; /* Erzwingt das klassische Wallpaper-Format */
+    width: 100%;
+    height: auto;
+}
+
+.wallpaper-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Sorgt dafür, dass es perfekt passt ohne zu verzerren */
+}
